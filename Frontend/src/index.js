@@ -1,10 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// Packages imports
+import React from "react";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Local imports such as components etc.
+import "./index.css";
+import App from "./App";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+
+// Root element for the app
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// Render the app
 root.render(
   <React.StrictMode>
     <App />
