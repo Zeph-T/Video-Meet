@@ -1,0 +1,16 @@
+.main_login{
+    background-color:#99ffa8;
+    background-image:
+    radial-gradient(at 20% 36%, hsla(223,100%,76%,1) 0px, transparent 50%),
+    radial-gradient(at 62% 29%, hsla(197,100%,76%,1) 0px, transparent 50%),
+    radial-gradient(at 93% 32%, hsla(200,100%,76%,1) 0px, transparent 50%),
+    radial-gradient(at 91% 58%, hsla(228,100%,76%,1) 0px, transparent 50%),
+    radial-gradient(at 55% 78%, hsla(261,100%,76%,1) 0px, transparent 50%); 
+    width: 500px;
+    height: 600px;
+    margin:auto;
+    margin-top: 50px;
+    text-align: left;
+    padding-left: 40px;
+    padding-top: 30px;
+}
