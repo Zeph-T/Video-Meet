@@ -5,6 +5,7 @@ import Login from "./Components/login";
 import Home from "./Components/main";
 import JoinMeet from "./Components/join_meet/JoinMeet";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Register from "./Components/register";
 // default app functional component
 function App() {
   // render the app
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<Login />} />
+          <Route exact path="/register" element={<Register />} />
           <Route path="/home" element={<Home />} />
           <Route path="/meet/:id" element={<JoinMeet />} />
         </Routes>
