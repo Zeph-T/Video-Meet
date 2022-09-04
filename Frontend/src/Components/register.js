@@ -6,7 +6,7 @@ import "./login.css";
 import elp1 from "../images/ellipse.png";
 
 // functional component for Register
-function Register() {
+function Register({ onToggle }) {
   // Local States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,7 +54,7 @@ function Register() {
             <input style={styles.inputBox} onChange={e => setConfirmPassword(e.target.value)}></input>
           </div>
 
-          <div style={{ textAlign: "center", marginTop: "70px", marginRight: "40px" }}>
+          <div style={{ textAlign: "center", marginTop: "20px", marginRight: "40px" }}>
             <button
               type="submit"
               className="button glass-morph"
@@ -64,6 +64,10 @@ function Register() {
             >
               Register
             </button>
+
+            <h5 style={{ margin: "20px 0" }} onClick={onToggle}>
+              Already a user? Login
+            </h5>
           </div>
         </div>
       </div>

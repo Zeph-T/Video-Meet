@@ -8,7 +8,7 @@ import "./login.css";
 import elp1 from "../images/ellipse.png";
 
 // functional component for Login
-function Login() {
+function Login({ onToggle }) {
   // Local States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -74,6 +74,10 @@ function Login() {
             >
               <FontAwesomeIcon icon={faGoogle} /> Login With Google
             </button>
+
+            <h5 style={{ margin: "20px 0" }} onClick={onToggle}>
+              Don't have an account? Sign Up
+            </h5>
           </div>
         </div>
       </div>
