@@ -13,6 +13,9 @@ function JoinMeet() {
           <button className="Audio button glass-morph">Audio</button>
         </div>
       </div>
+      <div className="instructions">
+        <h4>Waiting for someone to allow you in the meeting</h4>
+      </div>
     </div>
   );
 }
