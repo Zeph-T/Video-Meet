@@ -6,6 +6,7 @@ import Home from "./Components/main";
 import JoinMeet from "./Components/join_meet_screen/JoinMeet";
 import Meeting from "./Components/meeting_screen/Meeting";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Register from "./Components/register";
 // default app functional component
 function App() {
   // render the app
@@ -14,6 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<Login />} />
+          <Route exact path="/register" element={<Register />} />
           <Route path="/home" element={<Home />} />
           <Route path="/join-meet/:id" element={<JoinMeet />} />
           <Route path="/meet/:id" element={<Meeting />} />

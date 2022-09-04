@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./login.css";
 import img1 from "../images/graphic2.png";
-//import img2 from "../images/graphic3.png"
 
 function Home() {
   return (
@@ -57,7 +56,7 @@ function Home() {
           </div>
         </div>
         <div>
-          <img src={img1} style={{ width: "85%", marginLeft: "90px" }} alt="image"></img>
+          <img src={img1} style={{ width: "85%", marginLeft: "90px" }} alt=""></img>
         </div>
       </div>
     </div>

@@ -1,36 +1,32 @@
 // Packages imports
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 // Local imports
 import "./login.css";
 import elp1 from "../images/ellipse.png";
 
-// functional component for Login
-function Login() {
+// functional component for Register
+function Register() {
   // Local States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   // This disables the submit button if inputs are empty
-  const buttonDisabled = email.length === 0 || password.length === 0;
+  const buttonDisabled = email.length === 0 || password.length === 0 || confirmPassword.length === 0;
 
-  // login button will have a backgorund Color depending upon the buttonDisabled state
-  const loginBackColor = buttonDisabled ? "rgba(255, 255, 255, 0.4)" : "dodgerblue";
+  // register button will have a backgorund Color depending upon the buttonDisabled state
+  const registerBackColor = buttonDisabled ? "rgba(255, 255, 255, 0.4)" : "dodgerblue";
 
-  // function to handle Login button press
-  const onLoginPress = e => {
+  // function to handle Register button press
+  const onRegisterPress = e => {
     try {
       e.preventDefault();
-      console.log(email, password);
-    } catch (error) {}
-  };
+      console.log(email, password, confirmPassword);
 
-  // function to handle Google button press
-  const onGooglePress = e => {
-    try {
-      e.preventDefault();
+      if (password !== confirmPassword) {
+        // Show Alert here that passwords do not match
+      }
     } catch (error) {}
   };
 
@@ -39,9 +35,9 @@ function Login() {
     <div className="head_login">
       <div style={{ paddingTop: "50px" }}>
         <div className="main_login" style={{ display: "flex", flexDirection: "column" }}>
-          <img alt="" src={elp1} style={{ position: "absolute", top: "40%", right: "-34%", zIndex: "1" }}></img>
+          <img src={elp1} style={{ position: "absolute", top: "40%", right: "-34%", zIndex: "1" }} alt=""></img>
 
-          <div style={{ fontSize: "50px" }}>Log In</div>
+          <div style={{ fontSize: "50px" }}>Sign Up</div>
 
           <div style={styles.fieldTitle}>Email</div>
           <div>
@@ -53,26 +49,20 @@ function Login() {
             <input style={styles.inputBox} onChange={e => setPassword(e.target.value)}></input>
           </div>
 
+          <div style={styles.fieldTitle}>Confirm Password</div>
+          <div>
+            <input style={styles.inputBox} onChange={e => setConfirmPassword(e.target.value)}></input>
+          </div>
+
           <div style={{ textAlign: "center", marginTop: "70px", marginRight: "40px" }}>
             <button
               type="submit"
               className="button glass-morph"
-              style={{ ...styles.buttons, backgroundColor: loginBackColor }}
-              onClick={onLoginPress}
+              style={{ ...styles.buttons, backgroundColor: registerBackColor }}
+              onClick={onRegisterPress}
               disabled={buttonDisabled}
             >
-              Login
-            </button>
-
-            <h4 style={{ margin: "10px 0" }}>OR</h4>
-
-            <button
-              type="submit"
-              className="button glass-morph"
-              style={{ ...styles.buttons, width: "300px" }}
-              onClick={onGooglePress}
-            >
-              <FontAwesomeIcon icon={faGoogle} /> Login With Google
+              Register
             </button>
           </div>
         </div>
@@ -81,8 +71,8 @@ function Login() {
   );
 }
 
-// exporting the Login component
-export default Login;
+// exporting the Register component
+export default Register;
 
 // styles for the component
 const styles = {
