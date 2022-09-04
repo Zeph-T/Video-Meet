@@ -1,0 +1,45 @@
+.join-meet {
+    padding: 20px;
+    display: flex;
+    color: #FFFFFF;
+}
+
+@media only screen and (max-width: 1340px) {
+    .join-meet {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        color: #FFFFFF;
+    }
+}
+
+.preview {
+    width: 50%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instructions {
+    width: 50%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-preview.glass-morph {
+    width: 720px;
+    height: 480px;
+    /* margin: 20px 20px; */
+}
+
+.video-audio-btn {
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}

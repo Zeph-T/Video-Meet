@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  background-color:hsla(237,35%,22%,1);
+  background-image:
+  radial-gradient(at 0% 93%, hsla(261,54%,60%,0.6) 0px, transparent 50%),
+  radial-gradient(at 0% 0%, hsla(261,54%,60%,0.47) 0px, transparent 50%),
+  radial-gradient(at 100% 1%, hsla(198,63%,49%,0.7) 0px, transparent 50%);
+  width: 100vw;
+  height: 100vh;
 }
 
 .App-logo {
@@ -36,4 +43,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.glass-morph {
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 10px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.button.glass-morph {
+  width: 8vw;
+  height: 3vw;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, .2);
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 30px;
+  color: #fff;
+  z-index: 1;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all .3s ease-in-out;  
+  backdrop-filter: blur(15px);
+}
+
+.button.glass-morph:hover {
+  letter-spacing: 3px;
 }
