@@ -1,27 +1,24 @@
-.main_login{
-  
-    background: rgba(255,255,255,0.4);
-backdrop-filter: blur(5px);
+.main_login {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
     width: 450px;
     height: 600px;
-    margin:auto;
+    margin: auto;
     text-align: left;
     padding-left: 40px;
     padding-top: 30px;
     border-radius: 20px;
-    
-    
-
 }
-.head_login{
-    background-image:url(../images/graphic4.png);
+
+.head_login {
+    background-image: url(../images/graphic4.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     height: 100vh;
-    color:white
-    
+    color: white
 }
-.Home{
-    color:white
+
+.Home {
+    color: white
 }
