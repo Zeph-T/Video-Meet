@@ -1,0 +1,20 @@
+.meeting-screen{
+    padding: 20px;
+    height: auto;
+    color: #FFFFFF;
+}
+
+.meeting-screen .footer {
+    width: 98vw;    
+    padding: 20px 0;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.meeting-screen .footer .controls{
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+}
