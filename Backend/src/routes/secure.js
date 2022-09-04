@@ -1,5 +1,5 @@
 const apiHelper = require("../api/apiHelper");
-
+const MeetApi = require("../api/meeting");
 module.exports = (router) =>{
     router.use(function(req,res,next){
         apiHelper.isAuthenticated(req).then(isValid=>{
@@ -19,5 +19,8 @@ module.exports = (router) =>{
         // console.log("In / route",req.user);
         return res.send({message : "Working!"} );
     });
+    
+    router.get("/createMeeting",MeetApi.createMeeting);
+
 
 }
