@@ -1,0 +1,47 @@
+.join-meet {
+    padding: 20px;
+}
+
+.preview {
+    width: 50%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-preview.glass-morph {
+    width: 720px;
+    height: 480px;
+    /* margin: 20px 20px; */
+}
+
+.video-audio-btn {
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.button.glass-morph {
+    width: 8vw;
+    height: 3vw;
+    background: rgba(255, 255, 255, .05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .2);
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 30px;
+    color: #fff;
+    z-index: 1;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: all .3s ease-in-out;  
+    backdrop-filter: blur(15px);
+}
+
+.button.glass-morph:hover {
+    letter-spacing: 3px;
+}

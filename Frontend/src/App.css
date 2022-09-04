@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  background-color:hsla(237,35%,22%,1);
+  background-image:
+  radial-gradient(at 0% 93%, hsla(261,54%,60%,0.6) 0px, transparent 50%),
+  radial-gradient(at 0% 0%, hsla(261,54%,60%,0.47) 0px, transparent 50%),
+  radial-gradient(at 100% 1%, hsla(198,63%,49%,0.7) 0px, transparent 50%);
+  width: 100vw;
+  height: 100vh;
 }
 
 .App-logo {
@@ -36,4 +43,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.glass-morph {
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 10px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
