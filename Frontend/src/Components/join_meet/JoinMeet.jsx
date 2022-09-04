@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVideo, faMicrophone } from "@fortawesome/free-solid-svg-icons";
 import "./JoinMeet.css";
 
 function JoinMeet() {
@@ -9,8 +11,12 @@ function JoinMeet() {
       <div className="preview">
         <div className="video-preview glass-morph"></div>
         <div className="video-audio-btn">
-          <button className="video button glass-morph">Video</button>
-          <button className="Audio button glass-morph">Audio</button>
+          <button className="video button glass-morph">
+            <FontAwesomeIcon icon={faVideo} /> Video
+          </button>
+          <button className="Audio button glass-morph">
+            <FontAwesomeIcon icon={faMicrophone} /> Audio
+          </button>
         </div>
       </div>
       <div className="instructions">
