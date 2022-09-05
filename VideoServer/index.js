@@ -18,6 +18,10 @@ app.get("/", (req, res) => {
 	res.send("Server Up and Running!");
 });
 
+sanitizeString = (str) => {
+	return xss(str);
+};
+
 // mongoose.connect(process.env.DB_CONN_STRING,(err)=>{
 //     if(err)console.log(err);
 //     console.log("Database Connected!");

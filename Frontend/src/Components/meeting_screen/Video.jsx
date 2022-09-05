@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import io from "socket.io-client";
 
-import { IconButton, Input, Button } from "@material-ui/core";
+import { IconButton, Badge, Input, Button } from "@material-ui/core";
 import VideocamIcon from "@material-ui/icons/Videocam";
 import VideocamOffIcon from "@material-ui/icons/VideocamOff";
 import MicIcon from "@material-ui/icons/Mic";
 import MicOffIcon from "@material-ui/icons/MicOff";
+import ScreenShareIcon from "@material-ui/icons/ScreenShare";
+import StopScreenShareIcon from "@material-ui/icons/StopScreenShare";
 import CallEndIcon from "@material-ui/icons/CallEnd";
+import ChatIcon from "@material-ui/icons/Chat";
 
 import { message } from "antd";
 import "antd/dist/antd.css";
@@ -567,6 +570,18 @@ class Video extends Component {
               <IconButton onClick={this.handleAudio} className="button glass-morph">
                 {this.state.audio === true ? <MicIcon /> : <MicOffIcon />}
               </IconButton>
+
+              {this.state.screenAvailable === true ? (
+                <IconButton onClick={this.handleScreen} className="button glass-morph">
+                  {this.state.screen === true ? <ScreenShareIcon /> : <StopScreenShareIcon />}
+                </IconButton>
+              ) : null}
+
+              <Badge badgeContent={this.state.newmessages} max={999} color="secondary" onClick={this.openChat}>
+                <IconButton onClick={this.openChat} className="button glass-morph">
+                  <ChatIcon />
+                </IconButton>
+              </Badge>
             </div>
 
             <Modal show={this.state.showModal} onHide={this.closeChat} style={{ zIndex: "999999" }}>
@@ -596,11 +611,10 @@ class Video extends Component {
 
             <div className="container">
               <div style={{ paddingTop: "20px" }}>
-                <Input value={window.location.href} disable="true"></Input>
+                <Input value={window.location.href} disable="true" style={{ color: "white" }}></Input>
                 <Button
                   className="button glass-morph"
                   style={{
-                    backgroundColor: "#3f51b5",
                     color: "white",
                     marginLeft: "20px",
                     marginTop: "10px",
