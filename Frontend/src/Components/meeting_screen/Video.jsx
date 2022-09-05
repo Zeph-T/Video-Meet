@@ -552,6 +552,7 @@ class Video extends Component {
             <div style={{ justifyContent: "center", textAlign: "center", paddingTop: "40px" }}>
               <video
                 id="my-video"
+                className="video"
                 ref={this.localVideoref}
                 autoPlay
                 muted
@@ -639,6 +640,7 @@ class Video extends Component {
               <Row id="main" className="flex-container" style={{ margin: 0, padding: 0 }}>
                 <video
                   id="my-video"
+                  className="video"
                   ref={this.localVideoref}
                   autoPlay
                   muted
