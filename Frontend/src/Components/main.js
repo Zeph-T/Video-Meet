@@ -9,7 +9,9 @@ import three from "../images/2.png"
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import Dropdown from 'react-bootstrap/Dropdown';
 import Footer from "./footer";
+import { Link } from "react-router-dom";
 function Home() {
+
   const [login,setLogin]=useState(false);
 
 
@@ -45,8 +47,8 @@ function Home() {
         <button class="dropbtn"> <i class="fas fa-user " style={{fontSize:"1.7em"}} ></i></button>
         <div class="dropdown-content">
         <a href="#">Username</a>
-        {!login && <a href="/" >Login</a>}
-        {login && <a href="#" onClick={()=>setLogin(false)}>Logout</a>}
+        {!login && <Link to="/login" >Login</Link>}
+        {login && <Link to="#" onClick={()=>setLogin(false)}>Logout</Link>}
         </div>
       </div>
 

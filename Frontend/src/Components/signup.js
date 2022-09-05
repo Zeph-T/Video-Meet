@@ -1,33 +1,19 @@
 // Packages imports
 import React, { useEffect, useState } from "react";
-import jwt_decode from "jwt-decode";
+//import jwt_decode from "jwt-decode";
 
 // Local imports
 import "./login.css";
 import elp1 from "../images/ellipse.png";
-import { Link, Navigate } from "react-router-dom";
 
 // functional component for Login
-function Login({ onToggle }) {
+function SignUp({ onToggle }) {
   // Local States
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
-  // Initialize Google
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.initialize({
-      client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-      callback: onGoogleSuccessResponse,
-    });
-
-    google.accounts.id.renderButton(document.getElementById("google-button"), {
-      theme: "outline",
-      size: "large",
-    });
-  }, []);
-
-  // This disables the submit button if inputs are empty
+  
 
   const buttonDisabled = email.length === 0 || password.length === 0;
 
@@ -42,18 +28,7 @@ function Login({ onToggle }) {
 
     } catch (error) {}
   };
-  // const handleSignUp=()=>{
-  //   <Navigate to="/signup" />
-  // }
 
-  // function to handle Google button press
-  const onGoogleSuccessResponse = response => {
-    try {
-      console.log("Response from Google", response.credential);
-      const decoded = jwt_decode(response.credential);
-      console.log("Decoded", decoded);
-    } catch (error) {}
-  };
 
   // renders the component
   return (
@@ -62,7 +37,11 @@ function Login({ onToggle }) {
         <div className="main_login" style={{ display: "flex", flexDirection: "column" }}>
           <img alt="" src={elp1} style={{ position: "absolute", top: "40%", right: "-34%", zIndex: "1" }}></img>
 
-          <div style={{ fontSize: "50px" }}>Log In</div>
+          <div style={{ fontSize: "50px" }}>SIGN UP</div>
+          <div style={styles.fieldTitle}>Name</div>
+          <div>
+            <input style={styles.inputBox} onChange={e => setName(e.target.value)}></input>
+          </div>
 
           <div style={styles.fieldTitle}>Email</div>
           <div>
@@ -82,16 +61,8 @@ function Login({ onToggle }) {
               onClick={onLoginPress}
               disabled={buttonDisabled}
             >
-              Login
+              Sign-up
             </button>
-
-            <h4 style={{ margin: "10px 0" }}>OR</h4>
-
-            <div id="google-button" style={{ textAlign: "center",marginBottom:"10px" }}></div>
-
-            <Link to="/signup" style={{color:"black"}}>
-              Don't have an account? Sign Up
-            </Link>
           </div>
         </div>
       </div>
@@ -100,7 +71,7 @@ function Login({ onToggle }) {
 }
 
 // exporting the Login component
-export default Login;
+export default SignUp;
 
 // styles for the component
 const styles = {
