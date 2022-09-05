@@ -4,6 +4,30 @@
     color: #FFFFFF;
 }
 
+.meeting-screen .video-area {
+    background: green;
+    height: 80%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 200px 200px 200px;
+}
+
+.meeting-screen .video {
+    border-radius: 20px;
+}
+
+.meeting-screen #self-video{
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
+}
+
+.meeting-screen .self-video-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .meeting-screen .footer {
     width: 98vw;    
     padding: 20px 0;

@@ -9,25 +9,42 @@ import {
   faVideoSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import users from "./data";
 import "./Meeting.css";
 
 function Meeting() {
   const [isVideoOn, setIsVideoOn] = useState(true);
   const [isAudioOn, setIsAudioOn] = useState(true);
   const [audioStream, setAudioStream] = useState(null);
+  const [vHeight, setVHeight] = useState("600px");
+  const [userDetails, setUserDetails] = useState(users);
 
   const videoRef = useRef(null);
+  const videoAreaRef = useRef(null);
 
   useEffect(() => {
     getVideo();
     getAudio();
+    getUserVideos();
   }, [videoRef]);
+
+  const getUserVideos = () => {
+    let videoArea = videoAreaRef.current;
+    userDetails.forEach((user, i) => {
+      const node = document.createElement("img");
+      node.src = user.url;
+      node.alt = i;
+      videoArea.appendChild(node);
+    });
+    // videoArea.appendChildren(children);
+  };
 
   const getVideo = () => {
     navigator.mediaDevices
       .getUserMedia({ video: { width: 720 } })
       .then(stream => {
         let video = videoRef.current;
+        if (!video) return;
         video.srcObject = stream;
         video.play();
       })
@@ -38,6 +55,7 @@ function Meeting() {
 
   const stopVideo = e => {
     let video = videoRef.current;
+    if (!video) return;
     const stream = video.srcObject;
     const tracks = stream.getTracks();
 
@@ -83,10 +101,20 @@ function Meeting() {
 
   return (
     <div className="meeting-screen">
-      Meeting Screen
-      {audioStream && <p>Mic is onnn!!!</p>}
-      <div className="video-area">
-        <video ref={videoRef} />
+      {/* Meeting Screen
+      {audioStream && <p>Mic is onnn!!!</p>} */}
+      <div className="video-area" ref={videoAreaRef}>
+        {isVideoOn ? (
+          <video className="video" id="self-video" ref={videoRef} height={vHeight} />
+        ) : (
+          <div className="self-video-placeholder" style={{ height: vHeight }}>
+            <img
+              src="https://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png"
+              alt="user-img"
+              style={{ height: "50%" }}
+            />
+          </div>
+        )}
       </div>
       <div className="footer">
         <div className="info">

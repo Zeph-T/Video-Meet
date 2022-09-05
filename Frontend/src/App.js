@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import AuthPage from "./Components/auth";
 import Home from "./Components/main";
-import JoinMeet from "./Components/join_meet/JoinMeet";
+import JoinMeet from "./Components/join_meet_screen/JoinMeet";
 import Meeting from "./Components/meeting_screen/Meeting";
 
 // default app functional component
