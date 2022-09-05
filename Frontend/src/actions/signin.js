@@ -34,18 +34,18 @@ import {
    
     try {
         
-      const res = await axios.post('/auth/login', {email,password,isAuth:true,token});
+      const res = await axios.post('/auth/login', {email,password,isOAuth:true});
       console.log(res);
       dispatch({
         type: SIGNIN,
         payload: res.data,
       });
-      localStorage.setItem("isAuth",JSON.stringify(data));
+      localStorage.setItem("isAuth",JSON.stringify(res.data));
     } catch (error) {
       const errors = error.response.data.errors;
   
       if (errors) {
-        errors.forEach((err) => dispatch(setAlert(err.msg)));
+        errors.forEach((err) => console.log(err));
       }
       dispatch({
         type: LOGIN_FAIL,

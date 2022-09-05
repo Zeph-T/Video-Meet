@@ -6,19 +6,40 @@ import img2 from "../images/Vector.png"
 import one from "../images/sec.png";
 import two from "../images/1.png"
 import three from "../images/2.png"
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";\
 //import Dropdown from 'react-bootstrap/Dropdown';
 import Footer from "./footer";
 import { Link } from "react-router-dom";
 function Home() {
 
   const [login,setLogin]=useState(false);
+  const [link, setLink] = useState("");
 
 
   useEffect(() => {
    
   },[login]);
 
+  function dec2hex (dec) {
+    return dec.toString(16).padStart(2, "0")
+  }
+  
+  function generateId (len) {
+    var arr = new Uint8Array((len || 40) / 2)
+    window.crypto.getRandomValues(arr)
+    return Array.from(arr, dec2hex).join('')
+  }
+
+  const initMeeting=()=>{
+    console.log("abcd");
+    let meetId = generateId(8);
+    console.log(meetId);
+    window.location.href = `/meet/${meetId}`;
+  }
+
+  const goToMeeting=()=>{
+    window.location.href = link.trim();
+  }
   
   return (
     <>
@@ -78,26 +99,31 @@ function Home() {
                 borderRadius: "15px",
                 height:"45px"
               }}
+              onClick={initMeeting}
             >
               New Meeting
             </button>
-            <button
-              className="button glass-morph"
-              type="submit"
+            <input
+              placeholder="Enter link"
+              value={link}
+              onChange={(e)=>{setLink(e.target.value)}}
+              className="glass-morph"
+              // type="submit"
+              
               style={{
                 width: "250px",
                 marginLeft: "30px",
                 fontSize: "20px",
                 color: "#FFFFFF",
-                background: "#1E90FF88",
+                // background: "#1E90FF88",
                 outline: "none",
                 borderRadius: "15px",
-                height:"45px"
-                
+                height:"45px",
+                paddingLeft:"10px",
+                paddingRight:"45px"
               }}
-            >
-              Enter code or link
-            </button>
+            />
+            {(link.trim().length > 0) && <button className="button glass-morph" style={{width:"30px", marginTop:"5px", marginLeft: "-40px"}} onClick={goToMeeting}> <i class="fas fa-arrow-right"></i> </button>}
           </div>
         </div>
         <div>

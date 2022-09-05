@@ -9,6 +9,7 @@ import {
   const initialState = {
     token: localStorage.getItem('token') || "",
     isAuthenticated: false,
+    signupstate:false,
     loading: true,
     user: null,
   };
@@ -18,11 +19,12 @@ import {
   
     switch (type) {
       case SIGNUP: {
-        localStorage.setItem('token', payload.token);
-        console.log(payload.token);
+        console.log(payload);
+        // localStorage.setItem('token', payload.token);
+        // console.log(payload.token);
         return {
           ...state,
-          ...payload,
+          signupstate:true,
           loading: false,
         };
       }
