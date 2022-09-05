@@ -3,7 +3,7 @@ let cors = require('cors')
 const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-
+require('dotenv').config()
 mongoose
   .connect(process.env.DB_CONN_STRING, {
     useNewUrlParser: true,

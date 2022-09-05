@@ -6,6 +6,7 @@ const User = require('../models/user');
 const signup = (req, res) => {
     try {
         let userInfo = req.body;
+        console.log(req.body);
         userInfo.email = userInfo.email.toLowerCase();
         if (!userInfo.email || !userInfo.password || !userInfo.name || userInfo.password.length < 8) {
             if (userInfo.password.length < 8) {
