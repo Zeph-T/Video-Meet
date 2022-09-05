@@ -9,6 +9,9 @@ import Home from "./Components/main";
 import JoinMeet from "./Components/join_meet/JoinMeet";
 import store from "./store"
 import SignUp from "./Components/signup";
+import JoinMeet from "./Components/join_meet_screen/JoinMeet";
+import Video from "./Components/meeting_screen/Video";
+
 // default app functional component
 const App=()=> {
   // render the app
@@ -20,10 +23,12 @@ const App=()=> {
             <Route exact path="/" element={<Home />} />
             <Route path="/login" element={<AuthPage />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/meet/:id" element={<JoinMeet />} />
+            <Route path="/join-meet/:id" element={<JoinMeet />} />
+            <Route path="/meet/:id" element={<Video />} />
           </Routes>
         </Router>
       </Provider>
+     
     </div>
   );
 }
