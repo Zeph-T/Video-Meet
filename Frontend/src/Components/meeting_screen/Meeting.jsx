@@ -14,11 +14,13 @@ import "./Meeting.css";
 function Meeting() {
   const [isVideoOn, setIsVideoOn] = useState(true);
   const [isAudioOn, setIsAudioOn] = useState(true);
+  const [audioStream, setAudioStream] = useState(null);
 
   const videoRef = useRef(null);
 
   useEffect(() => {
     getVideo();
+    getAudio();
   }, [videoRef]);
 
   const getVideo = () => {
@@ -34,12 +36,55 @@ function Meeting() {
       });
   };
 
-  let toggleVideo = () => setIsVideoOn(prev => !prev);
-  let toggleAudio = () => setIsAudioOn(prev => !prev);
+  const stopVideo = e => {
+    let video = videoRef.current;
+    const stream = video.srcObject;
+    const tracks = stream.getTracks();
+
+    for (let i = 0; i < tracks.length; i++) {
+      let track = tracks[i];
+      track.stop();
+    }
+
+    video.srcObject = null;
+  };
+
+  const getAudio = () => {
+    navigator.mediaDevices
+      .getUserMedia({ audio: true, video: false })
+      .then(stream => {
+        setAudioStream(stream);
+      })
+      .catch(err => {
+        console.error("error:", err);
+      });
+  };
+
+  const stopAudio = () => {
+    if (audioStream) {
+      const tracks = audioStream.getTracks();
+
+      for (let i = 0; i < tracks.length; i++) {
+        let track = tracks[i];
+        track.stop();
+      }
+      setAudioStream(null);
+    }
+  };
+
+  let toggleVideo = function () {
+    isVideoOn ? stopVideo() : getVideo();
+    setIsVideoOn(prev => !prev);
+  };
+  let toggleAudio = function () {
+    isAudioOn ? stopAudio() : getAudio();
+    setIsAudioOn(prev => !prev);
+  };
 
   return (
     <div className="meeting-screen">
       Meeting Screen
+      {audioStream && <p>Mic is onnn!!!</p>}
       <div className="video-area">
         <video ref={videoRef} />
       </div>
