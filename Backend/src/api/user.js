@@ -57,11 +57,12 @@ const login = (req, res) => {
     try {
         if(req.body && req.body.isOAuth){ // OAuth
             let {token , email , name } = req.body;
-            VerifyTokenID(req.body.token).then(response=>{
+            VerifyTokenID(token).then(response=>{
                 if(response.status){
-                    User.findOne({email : email , isOAuth : true}).then(oUser=>{
+                    User.findOne({email : email , isOAuth : true}).lean().then(oUser=>{
                         if(!oUser){
                             let newUser = new User({
+                                name : name,
                                 email : email,
                                 isOAuth : true
                             })
@@ -70,10 +71,11 @@ const login = (req, res) => {
                                     console.log(err);
                                     return res.status(400).send({ error: 'Error creating the user' });
                                 }else{
-                                    res.status(200).json({...user._doc,authToken : generateToken(user._id)}); 
+                                    return res.status(200).json({...user,authToken : generateToken(user._id)}); 
                                 }
                             })
                         }
+                        return res.status(200).json({...oUser,authToken : generateToken(oUser._id)}); 
                     })
                 }else{
                     return res.status(400).send({error : "Could not verify the client"});
@@ -95,7 +97,7 @@ const login = (req, res) => {
                 if (user.validPassword(userInfo.password)) {
                     res.status(200).json({...user._doc,authToken : generateToken(user._id)});
                 } else {
-                    return res.status(404).send({ error: 'Password Invalid!' });
+                    return res.status(400).send({ error: 'Password Invalid!' });
                 }
             }).catch(err => {
                 console.log(err);

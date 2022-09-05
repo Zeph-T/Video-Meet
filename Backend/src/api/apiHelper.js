@@ -14,10 +14,7 @@ async function VerifyTokenID(token) {
   try {
     const ticket = await client.verifyIdToken({
       idToken: token,
-      audience: [
-        process.env.googleApiClientID,
-        process.env.googleApiClientID_Mobile,
-      ],
+      audience: process.env.googleApiClientID,
     });
 
     deferred.resolve({
