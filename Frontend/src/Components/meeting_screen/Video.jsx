@@ -52,7 +52,7 @@ class Video extends Component {
       message: "",
       newmessages: 0,
       askForUsername: true,
-      username: "",
+      username: "User",
     };
     connections = {};
 
@@ -520,25 +520,34 @@ class Video extends Component {
       <div>
         {this.state.askForUsername === true ? (
           <div>
-            <div
+            {/* <div
+              // className="glass-morph"
               style={{
-                background: "white",
-                width: "30%",
-                height: "auto",
+                // width: "30%",
+                // height: "auto",
                 padding: "20px",
                 minWidth: "400px",
                 textAlign: "center",
                 margin: "auto",
                 marginTop: "50px",
                 justifyContent: "center",
+                position: "absolute",
+                zIndex: "2",
+                top: "35%",
+                left: "35%",
               }}
+            > */}
+            {/* <p style={{ margin: "auto", fontWeight: "bold", fontSize: "1.5rem" }}>Press "Connect" when ready</p> */}
+            {/* <Input placeholder="Username" value={this.state.username} onChange={e => this.handleUsername(e)} /> */}
+            <Button
+              variant="contained"
+              onClick={this.connect}
+              style={{ margin: "20px", position: "fixed", zIndex: "2", bottom: "0%", left: "45%" }}
+              className="button glass-morph"
             >
-              <p style={{ margin: 0, fontWeight: "bold", paddingRight: "50px" }}>Set your username</p>
-              <Input placeholder="Username" value={this.state.username} onChange={e => this.handleUsername(e)} />
-              <Button variant="contained" color="primary" onClick={this.connect} style={{ margin: "20px" }}>
-                Connect
-              </Button>
-            </div>
+              Connect
+            </Button>
+            {/* </div> */}
 
             <div style={{ justifyContent: "center", textAlign: "center", paddingTop: "40px" }}>
               <video
@@ -550,8 +559,8 @@ class Video extends Component {
                   borderStyle: "solid",
                   borderColor: "#bdbdbd",
                   objectFit: "fill",
-                  width: "60%",
-                  height: "30%",
+                  width: "55%",
+                  height: "20%",
                 }}
               ></video>
             </div>
