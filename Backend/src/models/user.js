@@ -7,7 +7,11 @@ const userSchema = mongoose.Schema({
         type:String,
         lowercase : true
     },
-    password : {type: String}
+    password : {type: String},
+    isOAuth : {
+        type : Boolean,
+        default : false
+    }
 })
 
 
