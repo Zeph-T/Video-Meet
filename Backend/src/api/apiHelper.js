@@ -2,6 +2,37 @@ const jwt = require('jsonwebtoken');
 const Q = require('q');
 const User = require("../models/user");
 const EmailValidator = require('email-validator');
+const { OAuth2Client } = require("google-auth-library");
+
+
+
+const client = new OAuth2Client(process.env.googleApiClientID);
+
+
+async function VerifyTokenID(token) {
+  let deferred = Q.defer();
+  try {
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: [
+        process.env.googleApiClientID,
+        process.env.googleApiClientID_Mobile,
+      ],
+    });
+
+    deferred.resolve({
+      status : true
+    })
+  } catch (error) {
+    deferred.reject({
+      ok: false,
+      message: "Some Error Occured",
+      error: error,
+    });
+  }
+
+  return deferred.promise;
+}
 
 
 const isAuthenticated = async(req) =>{
@@ -68,5 +99,6 @@ const generateToken = (id) => {
 module.exports = {
     isAuthenticated , 
     validateUserEmail,
-    generateToken
+    generateToken,
+    VerifyTokenID
 }
