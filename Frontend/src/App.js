@@ -6,7 +6,7 @@ import "./App.css";
 import AuthPage from "./Components/auth";
 import Home from "./Components/main";
 import JoinMeet from "./Components/join_meet_screen/JoinMeet";
-import Meeting from "./Components/meeting_screen/Meeting";
+import Video from "./Components/meeting_screen/Video";
 
 // default app functional component
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Route exact path="/" element={<AuthPage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/join-meet/:id" element={<JoinMeet />} />
-          <Route path="/meet/:id" element={<Meeting />} />
+          <Route path="/meet/:id" element={<Video />} />
         </Routes>
       </Router>
     </div>
