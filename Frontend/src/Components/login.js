@@ -1,7 +1,6 @@
 // Packages imports
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import React, { useEffect, useState } from "react";
+import jwt_decode from "jwt-decode";
 
 // Local imports
 import "./login.css";
@@ -12,6 +11,20 @@ function Login({ onToggle }) {
   // Local States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // Initialize Google
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+      callback: onGoogleSuccessResponse,
+    });
+
+    google.accounts.id.renderButton(document.getElementById("google-button"), {
+      theme: "outline",
+      size: "large",
+    });
+  }, []);
 
   // This disables the submit button if inputs are empty
   const buttonDisabled = email.length === 0 || password.length === 0;
@@ -28,9 +41,11 @@ function Login({ onToggle }) {
   };
 
   // function to handle Google button press
-  const onGooglePress = e => {
+  const onGoogleSuccessResponse = response => {
     try {
-      e.preventDefault();
+      console.log("Response from Google", response.credential);
+      const decoded = jwt_decode(response.credential);
+      console.log("Decoded", decoded);
     } catch (error) {}
   };
 
@@ -66,14 +81,7 @@ function Login({ onToggle }) {
 
             <h4 style={{ margin: "10px 0" }}>OR</h4>
 
-            <button
-              type="submit"
-              className="button glass-morph"
-              style={{ ...styles.buttons, width: "300px" }}
-              onClick={onGooglePress}
-            >
-              <FontAwesomeIcon icon={faGoogle} /> Login With Google
-            </button>
+            <div id="google-button" style={{ textAlign: "center" }}></div>
 
             <h5 style={{ margin: "20px 0" }} onClick={onToggle}>
               Don't have an account? Sign Up
