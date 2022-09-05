@@ -1,5 +1,5 @@
-const BASE_API_URL = "http://localhost:8000/";
-export const VIDEO_SERVER_URL = "http://localhost:5000/";
+const BASE_API_URL = "https://video-meet-backend.herokuapp.com/";
+export const VIDEO_SERVER_URL = "https://videoserver.fly.dev/";
 
 export const api = {
   LOGIN_URL: BASE_API_URL + "auth/login",
