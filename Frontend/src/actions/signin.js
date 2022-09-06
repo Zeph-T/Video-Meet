@@ -6,12 +6,12 @@ import {
     LOGOUT,
   } from './types';
   import axios from 'axios';
-
+import { api } from '../utilities';
 
   
   export const signup = (name,email,password) => async (dispatch) => {
     try {
-      const res = await axios.post('/auth/signup', {name,email,password});
+      const res = await axios.post(api.SIGNUP_URL, {name,email,password});
      console.log(res);
       dispatch({
         type: SIGNUP,
@@ -30,17 +30,17 @@ import {
     }
   };
   
-  export const signin = (email,password) => async (dispatch) => {
+  export const signin = (body) => async (dispatch) => {
    
     try {
         
-      const res = await axios.post('/auth/login', {email,password,isOAuth:true});
+      const res = await axios.post(api.LOGIN_URL, body);
       console.log(res);
+      localStorage.setItem("isAuth",JSON.stringify(res.data));
       dispatch({
         type: SIGNIN,
         payload: res.data,
       });
-      localStorage.setItem("isAuth",JSON.stringify(res.data));
     } catch (error) {
       const errors = error.response.data.errors;
   
@@ -53,7 +53,7 @@ import {
     }
   };
   
-  export const Logout = () => async (dispatch) => {
+  export const logout = () => async (dispatch) => {
   
     dispatch({
       type: LOGOUT,

@@ -1,23 +1,27 @@
 // Packages imports
 import React, { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
+import {useDispatch,useSelector} from "react-redux";
 
 // Local imports
 import "./login.css";
 import elp1 from "../images/ellipse.png";
 import { Link, Navigate } from "react-router-dom";
-
+import {signin} from "../actions/signin";
+import { useNavigate } from "react-router-dom";
 // functional component for Login
 function Login({ onToggle }) {
   // Local States
   const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
   const [password, setPassword] = useState("");
-
+  const history=useNavigate();
+  const {isAuthenticated} = useSelector((state)=>state.userSignin)
   // Initialize Google
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
-      client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+      client_id: '177508630598-vuiuioqqhoh2ceho7s71qmhgarejc4pk.apps.googleusercontent.com',
       callback: onGoogleSuccessResponse,
     });
 
@@ -39,7 +43,7 @@ function Login({ onToggle }) {
     try {
       e.preventDefault();
       console.log(email, password);
-
+      dispatch(signin({email,password}))
     } catch (error) {}
   };
   // const handleSignUp=()=>{
@@ -49,12 +53,18 @@ function Login({ onToggle }) {
   // function to handle Google button press
   const onGoogleSuccessResponse = response => {
     try {
-      console.log("Response from Google", response.credential);
+      // console.log("Response from Google", response.credential);
       const decoded = jwt_decode(response.credential);
-      console.log("Decoded", decoded);
-    } catch (error) {}
+      // console.log("Decoded", decoded);
+      dispatch(signin({email : decoded.email , token : response.credential , name : decoded.given_name , isOAuth : true  }))
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  if (isAuthenticated) {
+    return <Navigate to="/" />;
+  }
   // renders the component
   return (
     <div className="head_login">
@@ -112,6 +122,7 @@ const styles = {
     outline: "none",
     borderRadius: "10px",
     paddingLeft: "10px",
+    color:"black"
   },
   buttons: {
     width: "200px",

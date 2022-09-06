@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from "react";
 import {useDispatch, useSelector} from "react-redux";
 //import jwt_decode from "jwt-decode";
-
+import { useHistory } from "react-router";
 // Local imports
 import "./login.css";
 import elp1 from "../images/ellipse.png";
 import {signup} from "../actions/signin.js"
-import { Navigate } from "react-router-dom";
+import { useNavigate,Navigate } from "react-router-dom";
 import Login from "../Components/login.js";
 // functional component for Login
 function SignUp({ onToggle }) {
@@ -16,8 +16,9 @@ function SignUp({ onToggle }) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const dispatch=useDispatch();
-  
+  const history=useNavigate();
   const {signupstate} = useSelector((state)=>state.userSignin)
+  //const {isAuthenticated} = useSelector((state)=>state.userSignin)
 
   const buttonDisabled = email.length === 0 || password.length === 0;
 
@@ -31,16 +32,20 @@ function SignUp({ onToggle }) {
       console.log(name,email, password);
       dispatch(signup(name,email,password));
       console.log(signupstate);
+      history.push("/");
     } catch (error) {
         console.log(error);
     }
   };
-  useEffect(()=>{
+  if (signupstate) {
+    return <Navigate to="/" />;
+  }
+  // useEffect(()=>{
 
-    // if(signupstate === true){
-    //     <Navigate to="/login" />
-    // }
-  },[signupstate])
+  //   if (signupstate) {
+  //     history.push("/");
+  //   }
+  // },[signupstate])
 
 
   // renders the component

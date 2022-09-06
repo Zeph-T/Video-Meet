@@ -26,6 +26,7 @@ import {
           ...state,
           signupstate:true,
           loading: false,
+          isAuthenticated: true,
         };
       }
       case SIGNIN: {
