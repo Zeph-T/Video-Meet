@@ -15,7 +15,7 @@ const Footer=()=>{
       <i style={{paddingLeft:"20px"}}class="fa fa-instagram fa-lg"></i>
       </div>
       <div style={{display:"flex",fontWeight:"bolder",fontSize:"14px",paddingLeft:"260px"}}>
-          <p>Copyright © 2022 Adobe. All rights reserved.</p>
+          <p>All rights reserved.</p>
           <p style={{marginLeft:"50px"}}>/ Privacy / Terms of Use / Cookie preferences / Do not sell my personal information / </p>
       </div>
     </div>
